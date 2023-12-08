@@ -8,6 +8,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Label = System.Windows.Forms.Label;
 
 namespace tamagotchi_4
 {
@@ -16,10 +17,12 @@ namespace tamagotchi_4
         public Form2()
         {
             InitializeComponent();
+            this.FormClosing += Form2_FormClosing;
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            this.KeyPreview = true;
             timer1.Enabled = true;
             gameIsStarted = true;
             labelPetsName.Text = AllData1.PetsName;
@@ -46,13 +49,14 @@ namespace tamagotchi_4
                     break;
             }
 
-            //if (AllData1.Toy == 1)
-            //{
-            //    picturePet.Location = new Point(148, 255);
-            //}
-
             Labels(label1, label2, label3, label4, label5, label6, label7, label8, false);
 
+            textBox1.Visible = false;
+            textBox1.Enabled = false;
+            buttonCheat.Visible = false;
+            buttonCheat.Enabled = false;
+
+            pictureEnd.Visible = false;
         }
 
         int plusValue = 5;
@@ -200,6 +204,9 @@ namespace tamagotchi_4
                     {
                         gameIsStarted = false;
                         gameIsWon = true;
+                        timer1.Enabled = false;
+
+                        PictureEnd(pictureEnd, Properties.Resources.WinGif);
                     }
                 }
                 if (AllData1.Level == "long")
@@ -210,9 +217,11 @@ namespace tamagotchi_4
                     {
                         gameIsStarted = false;
                         gameIsWon = true;
+                        timer1.Enabled = false;
+
+                        PictureEnd(pictureEnd, Properties.Resources.WinGif);
                     }
                 }
-
 
                 if (mood.Value < 5 || energy.Value < 5)
                 {
@@ -357,24 +366,46 @@ namespace tamagotchi_4
                         {
                             picturePet.Image = Properties.Resources.blue;
                             gameIsWon = false;
+                            timer1.Enabled = false;
                         }
                         else if (energy.Value == 0)
                         {
                             picturePet.Image = Properties.Resources.dead;
                             gameIsWon = false;
+                            timer1.Enabled = false;
                         }
                     }
                 }
 
+                // End of the game
                 if (gameIsStarted == false)
                 {
                     if (mood.Value < 5)
                     {
                         picturePet.Image = Properties.Resources.blue;
+                        timer1.Enabled = false;
+
+                        // pictureEnd
+                        PictureEnd(pictureEnd, Properties.Resources.GoneGif);
+                        pictureEnd.Visible = true;
                     }
                     else if (energy.Value < 5)
                     {
                         picturePet.Image = Properties.Resources.dead;
+                        timer1.Enabled = false;
+
+                        // pictureEnd
+                        PictureEnd(pictureEnd, Properties.Resources.DeadGif);
+                        pictureEnd.Visible = true;
+                    }
+                    else if (age.Value == 600)
+                    {
+                        gameIsWon = true;
+                        timer1.Enabled = false;
+
+                        // pictureEnd
+                        PictureEnd(pictureEnd, Properties.Resources.WinGif);
+                        pictureEnd.Visible = true;
                     }
                 }
             }
@@ -442,6 +473,73 @@ namespace tamagotchi_4
             }
         }
 
+
+        private void Form2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Y)
+            {
+                textBox1.Visible = true;
+                textBox1.Enabled = true;
+                buttonCheat.Visible = true;
+                buttonCheat.Enabled = true;
+            }
+            else if (e.KeyCode == Keys.U)
+            {
+                textBox1.Visible = false;
+                textBox1.Enabled = false;
+                buttonCheat.Visible = false;
+                buttonCheat.Enabled = false;
+            }
+        }
+
+        private void buttonCheat_Click(object sender, EventArgs e)
+        {
+            switch (textBox1.Text)
+            {
+                case "age++":
+                    age.Value = 600;
+                    break;
+                case "mood--":
+                    mood.Value = 0;
+                    break;
+                case "energy--":
+                    energy.Value = 0;
+                    break;
+            }
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (textBox1.Text == "age++")
+                {
+                    age.Value = 598;
+                    tick = 598;
+                    //timer1.Enabled = false;
+                    gameIsWon = true;
+                    gameIsStarted = false;
+                }
+                else if (textBox1.Text == "mood--")
+                {
+                    mood.Value = 3;
+                }
+                else if (textBox1.Text == "energy--")
+                {
+                    energy.Value = 3;
+                }
+
+            }
+        }
+
+
+
+
+
+
+
+
+
         static void Labels(System.Windows.Forms.Label label1, System.Windows.Forms.Label label2, 
             System.Windows.Forms.Label label3, System.Windows.Forms.Label label4,
             System.Windows.Forms.Label label5, System.Windows.Forms.Label label6,
@@ -456,6 +554,36 @@ namespace tamagotchi_4
             label6.Visible = vis;
             label7.Visible = vis;
             label8.Visible = vis;
+        }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Закрывается пользователем (крестик)
+                AllData1.Close = "close";
+            }
+        }
+
+
+        private void PictureBoxInfo(PictureBox pictureBox, int x, int y, int width, int height, Image image)
+        {
+            pictureBox.Location = new Point(x, y);
+            pictureBox.Size = new Size(width, height);
+            pictureBox.BackgroundImage = image;
+            pictureBox.BackgroundImageLayout = ImageLayout.Zoom;
+        }
+
+        private void PictureEnd(PictureBox pictureBox, Image image)
+        {
+            pictureBox.Visible = true;
+            pictureBox.Width = this.Width;
+            pictureBox.Height = this.Height;
+            pictureBox.Image = image;
+            pictureBox.Location = new Point(0,20);
+            BackColor = Color.Black;
+            BackgroundImage = Properties.Resources.WinGif;
+            menuStrip1.BackColor = Color.Black;
         }
     }
 }

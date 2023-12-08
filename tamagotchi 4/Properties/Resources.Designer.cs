@@ -113,6 +113,26 @@ namespace tamagotchi_4.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DeadGif {
+            get {
+                object obj = ResourceManager.GetObject("DeadGif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GoneGif {
+            get {
+                object obj = ResourceManager.GetObject("GoneGif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Happy {
             get {
                 object obj = ResourceManager.GetObject("Happy", resourceCulture);
@@ -186,6 +206,16 @@ namespace tamagotchi_4.Properties {
         internal static System.Drawing.Bitmap toy3_BG {
             get {
                 object obj = ResourceManager.GetObject("toy3_BG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WinGif {
+            get {
+                object obj = ResourceManager.GetObject("WinGif", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
