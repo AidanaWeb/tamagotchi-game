@@ -60,6 +60,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonCheat = new System.Windows.Forms.Button();
             this.pictureEnd = new System.Windows.Forms.PictureBox();
+            this.labelAge = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureToy)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturePet)).BeginInit();
@@ -356,13 +357,24 @@
             // 
             this.pictureEnd.BackColor = System.Drawing.Color.Transparent;
             this.pictureEnd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureEnd.Image = global::tamagotchi_4.Properties.Resources.WinGif;
+            this.pictureEnd.Image = ((System.Drawing.Image)(resources.GetObject("pictureEnd.Image")));
             this.pictureEnd.Location = new System.Drawing.Point(0, 29);
             this.pictureEnd.Name = "pictureEnd";
             this.pictureEnd.Size = new System.Drawing.Size(100, 50);
             this.pictureEnd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureEnd.TabIndex = 21;
             this.pictureEnd.TabStop = false;
+            // 
+            // labelAge
+            // 
+            this.labelAge.AutoSize = true;
+            this.labelAge.BackColor = System.Drawing.Color.Transparent;
+            this.labelAge.Font = new System.Drawing.Font("Orbitron", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAge.Location = new System.Drawing.Point(671, 59);
+            this.labelAge.Name = "labelAge";
+            this.labelAge.Size = new System.Drawing.Size(23, 20);
+            this.labelAge.TabIndex = 22;
+            this.labelAge.Text = "0";
             // 
             // Form2
             // 
@@ -371,6 +383,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1082, 553);
+            this.Controls.Add(this.labelAge);
             this.Controls.Add(this.pictureEnd);
             this.Controls.Add(this.buttonCheat);
             this.Controls.Add(this.textBox1);
@@ -441,5 +454,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonCheat;
         private System.Windows.Forms.PictureBox pictureEnd;
+        private System.Windows.Forms.Label labelAge;
     }
 }

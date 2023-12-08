@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Label = System.Windows.Forms.Label;
+using System.Media;
 
 namespace tamagotchi_4
 {
@@ -57,6 +58,11 @@ namespace tamagotchi_4
             buttonCheat.Enabled = false;
 
             pictureEnd.Visible = false;
+
+            picturePet.Image = Properties.Resources.Happy;
+
+            // Music
+            PlayMusic("bgMusic.wav");
         }
 
         int plusValue = 5;
@@ -82,6 +88,19 @@ namespace tamagotchi_4
 
             pauseCounter = 0;
             паузаToolStripMenuItem.Text = "Пауза";
+
+            textBox1.Visible = false;
+            textBox1.Enabled = false;
+            buttonCheat.Visible = false;
+            buttonCheat.Enabled = false;
+
+            pictureEnd.Visible = false;
+
+
+            // Background image back
+            BackgroundImage = Properties.Resources.Background1;
+            menuStrip1.BackColor = Color.Indigo;
+            picturePet.Image = Properties.Resources.Happy;
         }
 
 
@@ -193,6 +212,7 @@ namespace tamagotchi_4
         int tick = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
+            labelAge.Text = Convert.ToString(Math.Round(age.Value * 0.025));
             if (gameIsStarted == true)
             {
                 // Win
@@ -581,9 +601,15 @@ namespace tamagotchi_4
             pictureBox.Height = this.Height;
             pictureBox.Image = image;
             pictureBox.Location = new Point(0,20);
-            BackColor = Color.Black;
             BackgroundImage = Properties.Resources.WinGif;
             menuStrip1.BackColor = Color.Black;
+        }
+
+
+        public static void PlayMusic(string filepath)
+        {
+            SoundPlayer bgMusic = new SoundPlayer(filepath);
+            bgMusic.PlayLooping();
         }
     }
 }
