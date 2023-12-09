@@ -72,20 +72,8 @@ namespace tamagotchi_4
 
             picturePet.Image = Properties.Resources.Happy;
 
-            // Music
-            //PlayMusic("bgMusic.wav");
-            //Player.URL = "bgMusic.wav";
-
-
-            //Player.URL = "bgMusic.wav";
-
-            //Player.Location = new Point(90, 410);
-            //Player.Height = 34;
-
 
             player1.controls.play();
-
-
         }
 
         int plusValue = 5;
@@ -472,11 +460,19 @@ namespace tamagotchi_4
                     timer1.Enabled = true;
                     gameIsStarted = true;
                     паузаToolStripMenuItem.Text = "Пауза";
+                    button1.Enabled = true;
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                    button4.Enabled = true;
                 }
                 else if (pauseCounter % 2 != 0)
                 {
                     timer1.Enabled = false;
                     //gameIsStarted = false;
+                    button1.Enabled = false;
+                    button2.Enabled = false;
+                    button3.Enabled = false;
+                    button4.Enabled = false;
                     паузаToolStripMenuItem.Text = "Продолжить";
                 }
             }

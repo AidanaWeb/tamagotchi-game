@@ -427,9 +427,10 @@
             this.Controls.Add(this.pictureToy);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "Tamagotchi♥ ♥ ♥ ";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureToy)).EndInit();

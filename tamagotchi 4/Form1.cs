@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,13 +28,16 @@ namespace tamagotchi_4
 
             Button buttonStart = new Button();
             Button buttonRules = new Button();
+            Button buttonCode = new Button();
             ButtonsInfo(buttonRules, 330, 300, Color.DeepPink, "Правила", 150, 30, 12, FlatStyle.Popup);
             ButtonsInfo(buttonStart, 330, 250, Color.YellowGreen, "Начать игру", 150, 50, 12, FlatStyle.Flat);
 
+            ButtonsInfo(buttonCode, 330, 325, Color.DeepPink, "Код", 150, 30, 12, FlatStyle.Popup);
 
             pictureBG.Image = Properties.Resources.BG1;
             this.Controls.Add(buttonStart);
             this.Controls.Add(buttonRules);
+            this.Controls.Add(buttonCode);
             this.Controls.Add(pictureBG);
 
             // BG2 Visible 
@@ -82,6 +86,7 @@ namespace tamagotchi_4
                 pictureBG.Image = Properties.Resources.BG2;
                 ButtonsVis(buttonStart, false, false);
                 ButtonsVis(buttonRules, false, false);
+                ButtonsVis(buttonCode, false, false);
 
                 ButtonAdd(buttonQ);
                 ButtonAdd(buttonL);
@@ -97,9 +102,19 @@ namespace tamagotchi_4
                 pictureT.BringToFront();
             };
 
+            buttonRules.Click += (s, ev) =>
+            {
+                string filePath = "Правила.txt";
+                Process.Start(filePath);
+            };
 
+            buttonCode.Click += (s, ev) =>
+            {
+                string filePath = "Код игры.txt";
+                Process.Start(filePath);
+            };
 
-            buttonQ.Click += (s, ev) =>
+                buttonQ.Click += (s, ev) =>
             {
                 buttonL.BackColor = Color.MediumPurple;
                 buttonQ.BackColor = Color.MediumBlue;
