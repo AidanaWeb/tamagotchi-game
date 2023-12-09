@@ -10,21 +10,28 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Label = System.Windows.Forms.Label;
 using System.Media;
+using System.Net.Http.Headers;
+using WMPLib;
+using AxWMPLib;
 
 namespace tamagotchi_4
 {
     public partial class Form2 : Form
     {
+        WindowsMediaPlayer player1 = new WindowsMediaPlayer();
         public Form2()
         {
             InitializeComponent();
             this.FormClosing += Form2_FormClosing;
+
+            player1.URL = "bgMusic1.wav";
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
             this.KeyPreview = true;
             timer1.Enabled = true;
+            timer2.Enabled = true;
             gameIsStarted = true;
             labelPetsName.Text = AllData1.PetsName;
 
@@ -36,16 +43,20 @@ namespace tamagotchi_4
             // Toy tamagotchi
             switch (AllData1.Toy)
             {
-                case 1: pictureToy.Image = Properties.Resources.toy1_BG;
+                case 1:
+                    pictureToy.Image = Properties.Resources.toy1_BG;
                     picturePet.Location = new Point(148, 255);
                     break;
-                case 2: pictureToy.Image = Properties.Resources.toy2_BG;
+                case 2:
+                    pictureToy.Image = Properties.Resources.toy2_BG;
                     picturePet.Location = new Point(148, 250);
                     break;
-                case 3: pictureToy.Image = Properties.Resources.toy3_BG;
+                case 3:
+                    pictureToy.Image = Properties.Resources.toy3_BG;
                     picturePet.Location = new Point(148, 257);
                     break;
-                default: pictureToy.Image = Properties.Resources.toy1_BG;
+                default:
+                    pictureToy.Image = Properties.Resources.toy1_BG;
                     picturePet.Location = new Point(148, 255);
                     break;
             }
@@ -62,7 +73,19 @@ namespace tamagotchi_4
             picturePet.Image = Properties.Resources.Happy;
 
             // Music
-            PlayMusic("bgMusic.wav");
+            //PlayMusic("bgMusic.wav");
+            //Player.URL = "bgMusic.wav";
+
+
+            //Player.URL = "bgMusic.wav";
+
+            //Player.Location = new Point(90, 410);
+            //Player.Height = 34;
+
+
+            player1.controls.play();
+
+
         }
 
         int plusValue = 5;
@@ -208,7 +231,7 @@ namespace tamagotchi_4
             }
         }
 
-
+        int musictick = 0;
         int tick = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -231,7 +254,7 @@ namespace tamagotchi_4
                 }
                 if (AllData1.Level == "long")
                 {
-                    tick++;
+                    tick += 1;
                     age.Value = tick;
                     if (age.Value == 600)
                     {
@@ -397,6 +420,8 @@ namespace tamagotchi_4
                     }
                 }
 
+
+
                 // End of the game
                 if (gameIsStarted == false)
                 {
@@ -439,18 +464,21 @@ namespace tamagotchi_4
         int pauseCounter = 0;
         private void паузаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            pauseCounter++;
-            if (pauseCounter % 2 == 0)
+            if (gameIsStarted == true)
             {
-                timer1.Enabled = true;
-                gameIsStarted = true;
-                паузаToolStripMenuItem.Text = "Пауза";
-            }
-            else if (pauseCounter % 2 != 0 )
-            {
-                timer1.Enabled = false;
-                gameIsStarted = false;
-                паузаToolStripMenuItem.Text = "Продолжить";
+                pauseCounter++;
+                if (pauseCounter % 2 == 0)
+                {
+                    timer1.Enabled = true;
+                    gameIsStarted = true;
+                    паузаToolStripMenuItem.Text = "Пауза";
+                }
+                else if (pauseCounter % 2 != 0)
+                {
+                    timer1.Enabled = false;
+                    //gameIsStarted = false;
+                    паузаToolStripMenuItem.Text = "Продолжить";
+                }
             }
         }
 
@@ -473,7 +501,11 @@ namespace tamagotchi_4
 
         private void ещеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            pauseCounter = 0;
+            паузаToolStripMenuItem.Text = "пауза";
+            musicCounter = 0;
+
+            this.Close();
             AllData1.Close = "hide";
         }
 
@@ -490,6 +522,22 @@ namespace tamagotchi_4
             else if (Qcounter % 2 != 0)
             {
                 Labels(label1, label2, label3, label4, label5, label6, label7, label8, true);
+            }
+        }
+
+        int musicCounter = 0;
+        private void музыкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            musicCounter++;
+            if (musicCounter % 2 == 0)
+            {
+                player1.controls.play();
+                музыкаToolStripMenuItem.Image = Properties.Resources.soundPic;
+            }
+            else if (musicCounter % 2 != 0)
+            {
+                player1.controls.pause();
+                музыкаToolStripMenuItem.Image = Properties.Resources.nosoundPic;
             }
         }
 
@@ -560,7 +608,17 @@ namespace tamagotchi_4
 
 
 
-        static void Labels(System.Windows.Forms.Label label1, System.Windows.Forms.Label label2, 
+        private void отключитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void включитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        static void Labels(System.Windows.Forms.Label label1, System.Windows.Forms.Label label2,
             System.Windows.Forms.Label label3, System.Windows.Forms.Label label4,
             System.Windows.Forms.Label label5, System.Windows.Forms.Label label6,
             System.Windows.Forms.Label label7, System.Windows.Forms.Label label8,
@@ -600,16 +658,20 @@ namespace tamagotchi_4
             pictureBox.Width = this.Width;
             pictureBox.Height = this.Height;
             pictureBox.Image = image;
-            pictureBox.Location = new Point(0,20);
+            pictureBox.Location = new Point(0, 20);
             BackgroundImage = Properties.Resources.WinGif;
             menuStrip1.BackColor = Color.Black;
         }
 
-
-        public static void PlayMusic(string filepath)
+        private void timer2_Tick(object sender, EventArgs e)
         {
-            SoundPlayer bgMusic = new SoundPlayer(filepath);
-            bgMusic.PlayLooping();
+            musictick += 1;
+            // music loop
+            if (musictick % 170 == 0)
+            {
+                player1.controls.stop();
+                player1.controls.play();
+            }
         }
     }
 }

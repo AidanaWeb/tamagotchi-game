@@ -173,9 +173,29 @@ namespace tamagotchi_4.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nosoundPic {
+            get {
+                object obj = ResourceManager.GetObject("nosoundPic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Sleep {
             get {
                 object obj = ResourceManager.GetObject("Sleep", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap soundPic {
+            get {
+                object obj = ResourceManager.GetObject("soundPic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

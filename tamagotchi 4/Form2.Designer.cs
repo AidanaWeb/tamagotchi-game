@@ -47,6 +47,7 @@
             this.ещеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выйтиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.музыкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.picturePet = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,6 +62,7 @@
             this.buttonCheat = new System.Windows.Forms.Button();
             this.pictureEnd = new System.Windows.Forms.PictureBox();
             this.labelAge = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureToy)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturePet)).BeginInit();
@@ -162,14 +164,16 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AutoSize = false;
             this.menuStrip1.BackColor = System.Drawing.Color.Indigo;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.менюToolStripMenuItem,
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.музыкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1082, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1082, 35);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -184,7 +188,7 @@
             this.выйтиToolStripMenuItem1});
             this.менюToolStripMenuItem.Font = new System.Drawing.Font("Orbitron", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
-            this.менюToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.менюToolStripMenuItem.Size = new System.Drawing.Size(74, 31);
             this.менюToolStripMenuItem.Text = "Меню";
             this.менюToolStripMenuItem.Click += new System.EventHandler(this.менюToolStripMenuItem_Click);
             // 
@@ -226,11 +230,22 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripMenuItem1.AutoSize = false;
             this.toolStripMenuItem1.BackColor = System.Drawing.Color.GreenYellow;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(30, 24);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(39, 31);
             this.toolStripMenuItem1.Text = "?";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // музыкаToolStripMenuItem
+            // 
+            this.музыкаToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.музыкаToolStripMenuItem.AutoSize = false;
+            this.музыкаToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.музыкаToolStripMenuItem.Image = global::tamagotchi_4.Properties.Resources.soundPic;
+            this.музыкаToolStripMenuItem.Name = "музыкаToolStripMenuItem";
+            this.музыкаToolStripMenuItem.Size = new System.Drawing.Size(40, 30);
+            this.музыкаToolStripMenuItem.Click += new System.EventHandler(this.музыкаToolStripMenuItem_Click);
             // 
             // timer1
             // 
@@ -376,6 +391,11 @@
             this.labelAge.TabIndex = 22;
             this.labelAge.Text = "0";
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -455,5 +475,7 @@
         private System.Windows.Forms.Button buttonCheat;
         private System.Windows.Forms.PictureBox pictureEnd;
         private System.Windows.Forms.Label labelAge;
+        private System.Windows.Forms.ToolStripMenuItem музыкаToolStripMenuItem;
+        private System.Windows.Forms.Timer timer2;
     }
 }

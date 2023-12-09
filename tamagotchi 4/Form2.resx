@@ -6445,10 +6445,13 @@
         LzwEWIBLyIjGOIhQfHwsBB6FBocjNsKRSQrDqtpnjAJIxpKTACMUggAAOw==
 </value>
   </data>
+  <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>256, 17</value>
+  </metadata>
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABEwAAAJYCAYAAAB4lnMNAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAA/7JJREFUeF7svWm/5UaV5uuPdKsKMGDwgOcx0860zQwGY4MNnmcMVdV9+76/3VUU
+        vAAADrwBlbxySQAA/7JJREFUeF7svWm/5UaV5uuPdKsKMGDwgOcx0860zQwGY4MNnmcMVdV9+76/3VUU
         YGM70wPcT7nv86wVT8SKpSVt7XNO2obuF/+fpIgVg7S191H8T0i66YVHPj6Q30QeTrR0xamMgXwS45Um
         Xky8hHLkxUeuO5ecFy5dcy47Sh+kNJa9jHouBfK20sALDW33tEeXvBiWIsdsMZdHP3eB/TOwfvn64SUe
         g5bG9Ze4VMxjg5cMHNPHUMbg+hlBfyMvp+2Jqjy5gnLHuHrBnFD3SytpVfoWVubxbV6+Qbzy+PUE0zKf
