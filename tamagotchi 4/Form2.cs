@@ -24,11 +24,11 @@ namespace tamagotchi_4
             InitializeComponent();
             this.FormClosing += Form2_FormClosing;
 
-            player1.URL = "bgMusic1.wav";
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            player1.URL = "bgMusic1.wav";
             this.KeyPreview = true;
             timer1.Enabled = true;
             timer2.Enabled = true;
@@ -73,7 +73,7 @@ namespace tamagotchi_4
             picturePet.Image = Properties.Resources.Happy;
 
 
-            player1.controls.play();
+            //player1.controls.play();
         }
 
         int plusValue = 5;
@@ -106,6 +106,11 @@ namespace tamagotchi_4
             buttonCheat.Enabled = false;
 
             pictureEnd.Visible = false;
+
+            button1.Enabled = true;
+            button2.Enabled = true;
+            button3.Enabled = true;
+            button4.Enabled = true;
 
 
             // Background image back
@@ -467,8 +472,8 @@ namespace tamagotchi_4
                 }
                 else if (pauseCounter % 2 != 0)
                 {
-                    timer1.Enabled = false;
                     //gameIsStarted = false;
+                    timer1.Enabled = false;
                     button1.Enabled = false;
                     button2.Enabled = false;
                     button3.Enabled = false;
@@ -477,6 +482,7 @@ namespace tamagotchi_4
                 }
             }
         }
+
 
         private void toolStripSeparator1_Click(object sender, EventArgs e)
         {
@@ -497,9 +503,11 @@ namespace tamagotchi_4
 
         private void ещеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            player1.controls.stop();
             pauseCounter = 0;
             паузаToolStripMenuItem.Text = "пауза";
             musicCounter = 0;
+            музыкаToolStripMenuItem.Image = Properties.Resources.soundPic;
 
             this.Close();
             AllData1.Close = "hide";

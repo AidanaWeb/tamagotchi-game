@@ -5,14 +5,17 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WMPLib;
 
 namespace tamagotchi_4
 {
     public partial class Form1 : Form
     {
+        WindowsMediaPlayer player1 = new WindowsMediaPlayer();
         private Form2 form2;
         public Form1()
         {
@@ -24,6 +27,7 @@ namespace tamagotchi_4
         int toy = 1;
         private void Form1_Load(object sender, EventArgs e)
         {
+            player1.URL = "bgMusic1.wav";
             level = "quick";
 
             Button buttonStart = new Button();
@@ -31,7 +35,6 @@ namespace tamagotchi_4
             Button buttonCode = new Button();
             ButtonsInfo(buttonRules, 330, 300, Color.DeepPink, "Правила", 150, 30, 12, FlatStyle.Popup);
             ButtonsInfo(buttonStart, 330, 250, Color.YellowGreen, "Начать игру", 150, 50, 12, FlatStyle.Flat);
-
             ButtonsInfo(buttonCode, 330, 325, Color.DeepPink, "Код", 150, 30, 12, FlatStyle.Popup);
 
             pictureBG.Image = Properties.Resources.BG1;
@@ -156,6 +159,8 @@ namespace tamagotchi_4
             {
                 if (textPetsName.Text.Length > 3 && textPetsName.Text.Length < 10)
                 {
+                    player1.controls.stop();
+                    musicCounter = 1;
                     AllData1.Level = level;
                     AllData1.Toy = toy;
                     AllData1.PetsName = textPetsName.Text;
@@ -180,7 +185,6 @@ namespace tamagotchi_4
                 }
             };
         }
-
 
         public void ButtonsInfo(Button button, int x, int y, Color color, String text, int width, int height, int fsize, FlatStyle style)
         {
@@ -212,6 +216,22 @@ namespace tamagotchi_4
             pictureBox.Size = new Size(width, height);
             pictureBox.BackgroundImage = image;
             pictureBox.BackgroundImageLayout = ImageLayout.Zoom;
+        }
+
+        int musicCounter = 0;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            musicCounter++;
+            if (musicCounter % 2 == 0)
+            {
+                player1.controls.play();
+                
+            }
+            else if (musicCounter % 2 != 0)
+            {
+                player1.controls.pause();
+                
+            }
         }
     }
 }

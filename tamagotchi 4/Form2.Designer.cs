@@ -63,10 +63,14 @@
             this.pictureEnd = new System.Windows.Forms.PictureBox();
             this.labelAge = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.pictureMood = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureToy)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturePet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEnd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMood)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureToy
@@ -289,7 +293,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Orbitron", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(756, 419);
+            this.label3.Location = new System.Drawing.Point(756, 420);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 18);
             this.label3.TabIndex = 13;
@@ -396,6 +400,28 @@
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // pictureMood
+            // 
+            this.pictureMood.BackColor = System.Drawing.Color.Transparent;
+            this.pictureMood.Image = ((System.Drawing.Image)(resources.GetObject("pictureMood.Image")));
+            this.pictureMood.Location = new System.Drawing.Point(648, 120);
+            this.pictureMood.Name = "pictureMood";
+            this.pictureMood.Size = new System.Drawing.Size(46, 34);
+            this.pictureMood.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureMood.TabIndex = 23;
+            this.pictureMood.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(648, 184);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(46, 34);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -403,8 +429,10 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1082, 553);
-            this.Controls.Add(this.labelAge);
             this.Controls.Add(this.pictureEnd);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureMood);
+            this.Controls.Add(this.labelAge);
             this.Controls.Add(this.buttonCheat);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label8);
@@ -430,7 +458,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form2";
-            this.Text = "Tamagotchi♥ ♥ ♥ ";
+            this.Text = "Tamagotchi ♥ ♥ ♥ ";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureToy)).EndInit();
@@ -438,6 +466,8 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturePet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEnd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMood)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -478,5 +508,7 @@
         private System.Windows.Forms.Label labelAge;
         private System.Windows.Forms.ToolStripMenuItem музыкаToolStripMenuItem;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.PictureBox pictureMood;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
